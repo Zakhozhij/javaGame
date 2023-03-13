@@ -1,6 +1,7 @@
+import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
-public abstract class Hero implements HeroInterface{
+public abstract class Hero implements HeroInterface, Comparable<Hero> {
     protected static int number;
     protected static ThreadLocalRandom r;
 
@@ -8,46 +9,70 @@ public abstract class Hero implements HeroInterface{
     protected int hp;
     protected int maxHp;
     protected int speed;
-    protected int intelligence;
-    protected int agility;
+    protected int attack;
+    protected int defense;
+    protected int damage;
 
-    
     static {
         Hero.number = 0;
         Hero.r = ThreadLocalRandom.current();
     }
 
-    public Hero(String name, int hp, int speed, int intelligence, int agility) {
+    public Hero(String name, int hp, int speed, int attack, int defense, int damage) {
         this.NAME = name;
         this.hp = hp;
         this.speed = speed;
         this.maxHp = hp;
-        this.intelligence = intelligence;
-        this.agility = agility;
+        this.attack = attack;
+        this.defense = defense;
+        this.damage = damage;
     }
-  
-    
+
+    public Hero() {
+        this.NAME = this.getClass().getSimpleName();
+    }
 
     // public void GetDamage(int damage) {
-    //     if (this.hp - damage > 0) {
-    //         this.hp -= damage;
-    //     }
+    // if (this.hp - damage > 0) {
+    // this.hp -= damage;
+    // }
     // }
 
     // public void Attack(Hero target) {
-    //     int damage = Hero.r.nextInt(20);
-    //     target.GetDamage(damage);
+    // int damage = Hero.r.nextInt(20);
+    // target.GetDamage(damage);
     // }
     @Override
-    public void step(){}
-    
+    public void step(ArrayList<Hero> team,ArrayList<Hero> team2) {
+        System.out.println("Шаг.");
+    }
+
     @Override
     public String getInfo() {
-        return String.format("Name: %s  Hp: %d  Speed: %d  Intelligence: %d Agility: %d Type: %s ",
-                this.NAME, this.hp, this.speed, this.intelligence, this.agility, this.getClass().getSimpleName());
+        return String.format("Name: %s  Hp: %d  Attack: %d Defense: %d Speed: %d Type: %s ",
+                this.NAME, this.hp, this.attack, this.defense, this.speed, this.getClass().getSimpleName());
     }
-    @Override
-    public void Attack() {}
-    
 
+    @Override
+    public void Attack(Hero target) {
+    }
+
+    @Override
+    public int compareTo(Hero o) {
+        if (this.speed > o.speed)
+            return -1;
+        else if (this.speed < o.speed)
+            return 1;
+        else
+            return 0;
+    }
+
+    public void GetDamage(int damage) {
+        if (this.hp - damage > 0) {
+            this.hp -= damage;
+            System.out.printf("%s is alive and has %s hp\n", this.NAME, this.hp);
+        } else {
+            System.out.printf("%s is died\n", this.NAME);
+        }
+    }
 }

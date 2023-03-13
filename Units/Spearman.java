@@ -1,29 +1,33 @@
+import java.util.ArrayList;
+
 public class Spearman extends Hero{
-    private int endurance;
-    private int maxEndurance;
+
 
     public Spearman(String name) {
         super(
                 name,
-                150,
-                Spearman.r.nextInt(1, 6),
-                Spearman.r.nextInt(1, 4),
+                10,
+                4,
+                4,
+                5,
                 Spearman.r.nextInt(1, 4));
-        this.maxEndurance = Spearman.r.nextInt(80, 120);
-        this.endurance = maxEndurance;
+    }
+    public Spearman() {
+        super();
     }
     @Override
     public String getInfo() {
-        return String.format("%s  endurance: %d ", super.getInfo(), this.endurance);
+        return String.format("%s", super.getInfo());
     }
     
     @Override
-    public void step(){
+    public void step(ArrayList<Hero> team,ArrayList<Hero> team2){
         System.out.println("Step spearman!");
     }
 
     @Override
-    public void Attack() {
+    public void Attack(Hero target) {
         System.out.println("Attack spearman!");
     }
+    
 }

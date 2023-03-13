@@ -1,30 +1,45 @@
+import java.util.ArrayList;
+
 public class Monk extends Hero {
-    private int spiritEnergy;
-    private int maxSpiritEnergy;
+    private int magic;
+    private int maxMagic;
 
     public Monk(String name) {
         super(
                 name,
-                250,
-                Monk.r.nextInt(1, 11),
-                Monk.r.nextInt(4, 6),
-                Monk.r.nextInt(4, 6));
-        this.maxSpiritEnergy = Monk.r.nextInt(150, 200);
-        this.spiritEnergy = maxSpiritEnergy;
+                30,
+                5,
+                12,
+                7,
+                -4);
+        this.maxMagic = 1;
+        this.magic = maxMagic;
+    }
+    public Monk() {
+        super();
     }
 
     @Override
     public String getInfo() {
-        return String.format("%s  spiritEnergy: %d ", super.getInfo(), this.spiritEnergy);
+        return String.format("%s  Magic: %d ", super.getInfo(), this.magic);
     }
 
     @Override
-    public void step() {
+    public void step(ArrayList<Hero> team,ArrayList<Hero> team2) {
         System.out.println("Step monk!");
     }
 
     @Override
-    public void Attack() {
+    public void Attack(Hero target) {
         System.out.println("Attack monk!");
     }
+
+    public int getMagic() {
+        return magic;
+    }
+
+    public int getMaxMagic() {
+        return maxMagic;
+    }
+    
 }

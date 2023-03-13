@@ -1,31 +1,47 @@
+import java.util.ArrayList;
+
 public class Magician extends Hero {
 
-    private int mana;
-    private int maxMana;
+    private int magic;
+    private int maxMagic;
 
     public Magician(String name) {
         super(
                 name,
-                170,
-                Magician.r.nextInt(1, 11),
-                Magician.r.nextInt(4, 7),
-                Magician.r.nextInt(1, 5));
-        this.maxMana = Magician.r.nextInt(120, 150);
-        this.mana = maxMana;
+                30,
+                9,
+                17,
+                12,
+                -5
+                );
+        this.maxMagic = 1;
+        this.magic = maxMagic;
+    }
+    public Magician() {
+        super();
     }
 
     @Override
     public String getInfo() {
-        return String.format("%s  Mana: %d", super.getInfo(), this.mana);
+        return String.format("%s  Magic: %d", super.getInfo(), this.magic);
     }
 
     @Override
-    public void step() {
+    public void step(ArrayList<Hero> team,ArrayList<Hero> team2) {
         System.out.println("Step magician!");
     }
 
     @Override
-    public void Attack() {
+    public void Attack(Hero target) {
         System.out.println("Attack magician!");
     }
+
+    public int getMagic() {
+        return magic;
+    }
+
+    public int getMaxMagic() {
+        return maxMagic;
+    }
+    
 }

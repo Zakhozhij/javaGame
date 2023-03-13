@@ -1,31 +1,33 @@
-public class Robber extends Hero {
+import java.util.ArrayList;
 
-    private int endurance;
-    private int maxEndurance;
+public class Robber extends Hero {
 
     public Robber(String name) {
         super(
                 name,
-                300,
-                Robber.r.nextInt(1, 11),
-                Robber.r.nextInt(1, 5),
-                Robber.r.nextInt(4, 7));
-        this.maxEndurance = Robber.r.nextInt(120, 150);
-        this.endurance = maxEndurance;
+                10,
+                6,
+                8,
+                3,
+                Robber.r.nextInt(2, 5));
     }
+    public Robber() {
+        super();
+    }
+
 
     @Override
     public String getInfo() {
-        return String.format("%s  endurance: %d ", super.getInfo(), this.endurance);
+        return String.format("%s", super.getInfo());
     }
 
     @Override
-    public void step() {
+    public void step(ArrayList<Hero> team,ArrayList<Hero> team2) {
         System.out.println("Step robber!");
     }
 
     @Override
-    public void Attack() {
+    public void Attack(Hero target) {
         System.out.println("Attack robber!");
     }
 }

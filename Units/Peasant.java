@@ -1,31 +1,45 @@
+import java.util.ArrayList;
+
 public class Peasant extends Hero {
 
-    private int endurance;
-    private int maxEndurance;
+    
+    private int delivery;
 
     public Peasant(String name) {
         super(
                 name,
-                150,
-                Peasant.r.nextInt(1, 6),
-                Peasant.r.nextInt(1, 4),
-                Peasant.r.nextInt(1, 4));
-        this.maxEndurance = Peasant.r.nextInt(80, 120);
-        this.endurance = maxEndurance;
+                1,
+                3,
+                1,
+                1,
+                1);
+        this.delivery = 1;
     }
-
+    public Peasant() {
+        super();
+    }
+    
     @Override
     public String getInfo() {
-        return String.format("%s  endurance: %d ", super.getInfo(), this.endurance);
+        return String.format("%s  Delivery: %d ", super.getInfo(), this.delivery);
     }
 
     @Override
-    public void step() {
+    public void step(ArrayList<Hero> team,ArrayList<Hero> team2) {
         System.out.println("Step peasant!");
     }
 
     @Override
-    public void Attack() {
+    public void Attack(Hero target) {
         System.out.println("Attack peasant!");
     }
+
+
+    public int getDelivery() {
+        return delivery;
+    }
+    public void setDelivery(int delivery) {
+        this.delivery = delivery;
+    }
+    
 }
