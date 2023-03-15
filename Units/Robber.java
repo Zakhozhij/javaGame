@@ -2,9 +2,10 @@ import java.util.ArrayList;
 
 public class Robber extends Hero {
 
-    public Robber(String name) {
+    public Robber(String name, int team) {
         super(
                 name,
+                team,
                 10,
                 6,
                 8,
@@ -22,7 +23,7 @@ public class Robber extends Hero {
     }
 
     @Override
-    public void step(ArrayList<Hero> team,ArrayList<Hero> team2) {
+    public void step(Board board,ArrayList<Hero> moveList) {
         System.out.println("Step robber!");
     }
 

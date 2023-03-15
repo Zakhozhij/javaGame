@@ -12,14 +12,16 @@ public abstract class Hero implements HeroInterface, Comparable<Hero> {
     protected int attack;
     protected int defense;
     protected int damage;
+    protected int team;
 
     static {
         Hero.number = 0;
         Hero.r = ThreadLocalRandom.current();
     }
 
-    public Hero(String name, int hp, int speed, int attack, int defense, int damage) {
+    public Hero(String name, int team, int hp, int speed, int attack, int defense, int damage) {
         this.NAME = name;
+        this.team = team;
         this.hp = hp;
         this.speed = speed;
         this.maxHp = hp;
@@ -43,7 +45,7 @@ public abstract class Hero implements HeroInterface, Comparable<Hero> {
     // target.GetDamage(damage);
     // }
     @Override
-    public void step(ArrayList<Hero> team,ArrayList<Hero> team2) {
+    public void step(Board board,ArrayList<Hero> moveList) {
         System.out.println("Шаг.");
     }
 
@@ -72,7 +74,9 @@ public abstract class Hero implements HeroInterface, Comparable<Hero> {
             this.hp -= damage;
             System.out.printf("%s is alive and has %s hp\n", this.NAME, this.hp);
         } else {
+
             System.out.printf("%s is died\n", this.NAME);
+            //die(this);
         }
     }
 }

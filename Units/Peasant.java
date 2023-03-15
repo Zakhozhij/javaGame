@@ -5,9 +5,10 @@ public class Peasant extends Hero {
     
     private int delivery;
 
-    public Peasant(String name) {
+    public Peasant(String name,int team) {
         super(
                 name,
+                team,
                 1,
                 3,
                 1,
@@ -25,7 +26,7 @@ public class Peasant extends Hero {
     }
 
     @Override
-    public void step(ArrayList<Hero> team,ArrayList<Hero> team2) {
+    public void step(Board board,ArrayList<Hero> moveList) {
         System.out.println("Step peasant!");
     }
 

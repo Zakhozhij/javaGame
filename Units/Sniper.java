@@ -5,9 +5,10 @@ public class Sniper extends Hero{
     private int shots;
     private int maxShots;
 
-    public Sniper(String name) {
+    public Sniper(String name, int team) {
         super(
                 name,
+                team,
                 15,
                 9,
                 12,
@@ -25,7 +26,7 @@ public class Sniper extends Hero{
     }
 
     @Override
-    public void step(ArrayList<Hero> team,ArrayList<Hero> team2){
+    public void step(Board board,ArrayList<Hero> moveList){
         System.out.println("Step sniper!");
     }
 

@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public interface HeroInterface {
-    void step(ArrayList<Hero> team,ArrayList<Hero> team2);
+    void step(Board board,ArrayList<Hero> moveList);
     String getInfo();
     void Attack(Hero target);
 }

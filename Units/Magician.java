@@ -5,9 +5,10 @@ public class Magician extends Hero {
     private int magic;
     private int maxMagic;
 
-    public Magician(String name) {
+    public Magician(String name,int team) {
         super(
                 name,
+                team,
                 30,
                 9,
                 17,
@@ -27,7 +28,7 @@ public class Magician extends Hero {
     }
 
     @Override
-    public void step(ArrayList<Hero> team,ArrayList<Hero> team2) {
+    public void step(Board board,ArrayList<Hero> moveList) {
         System.out.println("Step magician!");
     }
 

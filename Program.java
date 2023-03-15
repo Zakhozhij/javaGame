@@ -18,62 +18,44 @@ import java.util.concurrent.ThreadLocalRandom;
  * В main пройти по спискам и вызвать у всех персонажей getInfo.
  */
 public class Program {
+    public static int UNIT = 10;
+
     public static void main(String[] args) {
 
+        Board board = new Board(new Hero[10][10]);
         ArrayList<Hero> list1 = new ArrayList<>();
         ArrayList<Hero> list2 = new ArrayList<>();
         ArrayList<Hero> movePriority = new ArrayList<>();
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < UNIT; i++) {
             switch (ThreadLocalRandom.current().nextInt(0, 4)) {
                 case 0:
-                    list1.add(new Magician(getName()));
+                    list1.add(new Magician(getName(), 1));
                     break;
                 case 1:
-                    list1.add(new Robber(getName()));
+                    list1.add(new Robber(getName(), 1));
                     break;
                 case 2:
-                    list1.add(new Sniper(getName()));
+                    list1.add(new Sniper(getName(), 1));
                     break;
                 case 3:
-                    list1.add(new Peasant(getName()));
+                    list1.add(new Peasant(getName(), 1));
                     break;
-                // case 4:
-                // list1.add(new Peasant(getName()));
-                // break;
-                // case 5:
-                // list1.add(new Spearman(getName()));
-                // break;
-                // case 6:
-                // list1.add(new Monk(getName()));
-                // break;
                 default:
                     break;
             }
             switch (ThreadLocalRandom.current().nextInt(0, 4)) {
-                // case 0:
-                // list2.add(new Magician(getName()));
-                // break;
-                // case 1:
-                // list2.add(new Robber(getName()));
-                // break;
-                // case 2:
-                // list2.add(new Sniper(getName()));
-                // break;
                 case 0:
-                    list2.add(new Bowman(getName()));
+                    list2.add(new Bowman(getName(), 2));
                     break;
-                // case 4:
-                // list2.add(new Peasant(getName()));
-                // break;
                 case 1:
-                    list2.add(new Spearman(getName()));
+                    list2.add(new Spearman(getName(), 2));
                     break;
                 case 2:
-                    list2.add(new Monk(getName()));
+                    list2.add(new Monk(getName(), 2));
                     break;
                 case 3:
-                    list2.add(new Peasant(getName()));
+                    list2.add(new Peasant(getName(), 2));
                     break;
                 default:
                     break;
@@ -95,8 +77,14 @@ public class Program {
                 ((Peasant) (unit)).setDelivery(1);
             }
         }
-        movePriority.forEach(u -> System.out.println(u.getInfo()));
-        list2.forEach(u -> u.step(list1, list2));
+        board.setHeroCoordinates(list1, list2);
+        board.getInfo();
+
+        // movePriority.forEach(u -> System.out.println(u.getInfo()));
+        movePriority.forEach(u -> u.step(board, movePriority));
+
+        System.out.println("--------------------------");
+
     }
 
     private static String getName() {
