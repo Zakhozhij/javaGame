@@ -2,9 +2,8 @@ import java.util.ArrayList;
 public abstract class Shooter extends Hero {
 
     private int shots;
-    private int maxShots;
 
-    public Shooter(String name, int team, int hp, int speed, int attack, int defense, int damage,int shots,int maxShots) {
+    public Shooter(String name, int team, int hp, int speed, int attack, int defense, int damage,int shots) {
         super(
                 name,
                 team,
@@ -13,7 +12,6 @@ public abstract class Shooter extends Hero {
                 attack,
                 defense,
                 damage);
-        this.maxShots = maxShots;
         this.shots = shots;
     }
 
@@ -23,7 +21,7 @@ public abstract class Shooter extends Hero {
 
     @Override
     public String getInfo() {
-        return String.format("%s Shots: %d", super.getInfo(), this.shots);
+        return String.format("%s", super.getInfo());
     }
 
     @Override
@@ -33,7 +31,7 @@ public abstract class Shooter extends Hero {
         double dist = 11;
         double minDist = 11;
         if (this.shots > 0 && this.hp > 0) {
-            System.out.println("Могу стрелять!");
+           // System.out.println("Могу стрелять!");
 
             for (Hero unit : moveList) {
                 if (unit.hp > 0 && unit.team != teamNumber) {
@@ -46,7 +44,7 @@ public abstract class Shooter extends Hero {
                 }
 
             }
-            System.out.println(victim.getInfo());
+            //System.out.println(victim.getInfo());
             if (victim != null) {
                 this.Attack(victim);
                 this.shots--;
@@ -56,7 +54,7 @@ public abstract class Shooter extends Hero {
                 if (unit.getClass().getTypeName().equals("Peasant") && unit.hp > 0
                         && ((Peasant) (unit)).getDelivery() > 0 && unit.team == teamNumber) {
                     this.shots++;
-                    System.out.println("Крестьянин вернул стрелу!");
+                    //System.out.println("Крестьянин вернул стрелу!");
                     ((Peasant) (unit)).setDelivery(0);
                     // System.out.printf("Осталось стрел %s\n",this.shots);
                     break;
@@ -64,7 +62,7 @@ public abstract class Shooter extends Hero {
             }
 
         } else if (this.shots == 0 && this.hp > 0) {
-            System.out.println("Не могу стрелять!");
+            //System.out.println("Не могу стрелять!");
         } else if (this.hp <= 0) {
             //System.out.println("Арбалетчик мертв!");
         }
@@ -73,9 +71,9 @@ public abstract class Shooter extends Hero {
     @Override
     public void Attack(Hero target) {
         int causedDamage = this.damage;
-        System.out.printf("%s attack %s\t", this.getClass().getSimpleName(), target.getClass().getSimpleName());
-        System.out.printf("Power of knock = %d\n", causedDamage);
-        target.GetDamage(damage);
+        // System.out.printf("%s attack %s\t", this.getClass().getSimpleName(), target.getClass().getSimpleName());
+        // System.out.printf("Power of knock = %d\n", causedDamage);
+        target.GetDamage(causedDamage);
     }
 
 

@@ -23,12 +23,15 @@ public class Spearman extends Hero{
     
     @Override
     public void step(Board board,ArrayList<Hero> moveList){
-        System.out.println("Step spearman!");
+        //System.out.println("Step spearman!");
     }
 
     @Override
     public void Attack(Hero target) {
-        System.out.println("Attack spearman!");
+        //System.out.println("Attack spearman!");
     }
-    
+    @Override
+    public String getName(){
+        return "Spearman";
+    }
 }

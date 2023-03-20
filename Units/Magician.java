@@ -24,17 +24,17 @@ public class Magician extends Hero {
 
     @Override
     public String getInfo() {
-        return String.format("%s  Magic: %d", super.getInfo(), this.magic);
+        return String.format("%s", super.getInfo());
     }
 
     @Override
     public void step(Board board,ArrayList<Hero> moveList) {
-        System.out.println("Step magician!");
+        //System.out.println("Step magician!");
     }
 
     @Override
     public void Attack(Hero target) {
-        System.out.println("Attack magician!");
+        //System.out.println("Attack magician!");
     }
 
     public int getMagic() {
@@ -43,6 +43,10 @@ public class Magician extends Hero {
 
     public int getMaxMagic() {
         return maxMagic;
+    }
+    @Override
+    public String getName(){
+        return "Magician";
     }
     
 }

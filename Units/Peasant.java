@@ -22,17 +22,17 @@ public class Peasant extends Hero {
     
     @Override
     public String getInfo() {
-        return String.format("%s  Delivery: %d ", super.getInfo(), this.delivery);
+        return String.format("%s", super.getInfo());
     }
 
     @Override
     public void step(Board board,ArrayList<Hero> moveList) {
-        System.out.println("Step peasant!");
+        //System.out.println("Step peasant!");
     }
 
     @Override
     public void Attack(Hero target) {
-        System.out.println("Attack peasant!");
+        //System.out.println("Attack peasant!");
     }
 
 
@@ -42,5 +42,8 @@ public class Peasant extends Hero {
     public void setDelivery(int delivery) {
         this.delivery = delivery;
     }
-    
+    @Override
+    public String getName(){
+        return "Peasant";
+    }
 }

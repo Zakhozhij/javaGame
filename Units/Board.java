@@ -16,12 +16,14 @@ public class Board {
         y = 0;
         for (Hero unit : team) {
             this.board[x][y] = unit;
+            unit.position=new Vector2(x+1,y+1);
             y++;
         }
         x = 9;
         y = 0;
         for (Hero unit : team2) {
             this.board[x][y] = unit;
+            unit.position=new Vector2(x+1,y+1);
             y++;
         }
     }

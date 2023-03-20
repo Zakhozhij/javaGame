@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
 /*
@@ -18,77 +19,82 @@ import java.util.concurrent.ThreadLocalRandom;
  * В main пройти по спискам и вызвать у всех персонажей getInfo.
  */
 public class Program {
-    public static int UNIT = 10;
+    public static int GANG_SIZE = 10;
+    public static ArrayList<Hero> whiteSide = new ArrayList<>();
+    public static ArrayList<Hero> darkSide = new ArrayList<>();
+    public static ArrayList<Hero> allUnits = new ArrayList<>();
+    public static Board board = new Board(new Hero[10][10]);
 
     public static void main(String[] args) {
 
-        Board board = new Board(new Hero[10][10]);
-        ArrayList<Hero> list1 = new ArrayList<>();
-        ArrayList<Hero> list2 = new ArrayList<>();
-        ArrayList<Hero> movePriority = new ArrayList<>();
+        init();
+        Scanner sc = new Scanner(System.in);
+        while (true) {
+            rechargePeasants();
+            ConsoleView.view();
+            makeStep();
+            sc.nextLine();
+        }
+        //sc.close();
 
-        for (int i = 0; i < UNIT; i++) {
+    }
+
+    private static void init() {
+        for (int i = 0; i < GANG_SIZE; i++) {
             switch (ThreadLocalRandom.current().nextInt(0, 4)) {
                 case 0:
-                    list1.add(new Magician(getName(), 1));
+                    whiteSide.add(new Magician(getName(), 1));
                     break;
                 case 1:
-                    list1.add(new Robber(getName(), 1));
+                    whiteSide.add(new Robber(getName(), 1));
                     break;
                 case 2:
-                    list1.add(new Sniper(getName(), 1));
+                    whiteSide.add(new Sniper(getName(), 1));
                     break;
                 case 3:
-                    list1.add(new Peasant(getName(), 1));
+                    whiteSide.add(new Peasant(getName(), 1));
                     break;
                 default:
                     break;
             }
             switch (ThreadLocalRandom.current().nextInt(0, 4)) {
                 case 0:
-                    list2.add(new Bowman(getName(), 2));
+                    darkSide.add(new Bowman(getName(), 2));
                     break;
                 case 1:
-                    list2.add(new Spearman(getName(), 2));
+                    darkSide.add(new Spearman(getName(), 2));
                     break;
                 case 2:
-                    list2.add(new Monk(getName(), 2));
+                    darkSide.add(new Monk(getName(), 2));
                     break;
                 case 3:
-                    list2.add(new Peasant(getName(), 2));
+                    darkSide.add(new Peasant(getName(), 2));
                     break;
                 default:
                     break;
             }
         }
-        // Collections.sort(list1);
-        // list1.forEach(u -> System.out.println(u.getInfo()));
-        // System.out.println("----------------------------");
-        // Collections.sort(list2);
-        // list2.forEach(u -> System.out.println(u.getInfo()));
-        // System.out.println("----------------------------");
+        allUnits.addAll(whiteSide);
+        allUnits.addAll(darkSide);
+        Collections.sort(allUnits);
 
-        movePriority.addAll(list1);
-        movePriority.addAll(list2);
-        Collections.sort(movePriority);
+        board.setHeroCoordinates(whiteSide, darkSide);
+        // board.getInfo();
+    }
 
-        for (Hero unit : movePriority) {
+    private static void rechargePeasants() {
+        for (Hero unit : allUnits) {
             if (unit.getClass().getTypeName().equals("Peasant")) {
                 ((Peasant) (unit)).setDelivery(1);
             }
         }
-        board.setHeroCoordinates(list1, list2);
-        board.getInfo();
-
-        // movePriority.forEach(u -> System.out.println(u.getInfo()));
-        movePriority.forEach(u -> u.step(board, movePriority));
-
-        System.out.println("--------------------------");
-
     }
 
     private static String getName() {
         return Names.values()[ThreadLocalRandom.current().nextInt(Names.values().length)].toString();
     }
 
+    private static void makeStep() {
+        allUnits.forEach(u -> u.step(board, allUnits));
+    }
 }

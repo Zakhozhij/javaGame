@@ -24,11 +24,15 @@ public class Robber extends Hero {
 
     @Override
     public void step(Board board,ArrayList<Hero> moveList) {
-        System.out.println("Step robber!");
+        //System.out.println("Step robber!");
     }
 
     @Override
     public void Attack(Hero target) {
-        System.out.println("Attack robber!");
+        //System.out.println("Attack robber!");
+    }
+    @Override
+    public String getName(){
+        return "Robber";
     }
 }

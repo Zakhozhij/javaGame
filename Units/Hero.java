@@ -13,6 +13,7 @@ public abstract class Hero implements HeroInterface, Comparable<Hero> {
     protected int defense;
     protected int damage;
     protected int team;
+    protected Vector2 position;
 
     static {
         Hero.number = 0;
@@ -28,6 +29,7 @@ public abstract class Hero implements HeroInterface, Comparable<Hero> {
         this.attack = attack;
         this.defense = defense;
         this.damage = damage;
+        
     }
 
     public Hero() {
@@ -46,13 +48,13 @@ public abstract class Hero implements HeroInterface, Comparable<Hero> {
     // }
     @Override
     public void step(Board board,ArrayList<Hero> moveList) {
-        System.out.println("Шаг.");
+        
     }
 
     @Override
     public String getInfo() {
-        return String.format("Name: %s  Hp: %d  Attack: %d Defense: %d Speed: %d Type: %s ",
-                this.NAME, this.hp, this.attack, this.defense, this.speed, this.getClass().getSimpleName());
+        String outStr = String.format("\t%s\tA %d\tDEF %d\tHP %d%%\tDMG %d\t ", this.getClass().getSimpleName().charAt(0), this.attack,this.defense,(int) this.hp * 100/this.maxHp,(int)this.damage/2);
+        return outStr;
     }
 
     @Override
@@ -72,11 +74,21 @@ public abstract class Hero implements HeroInterface, Comparable<Hero> {
     public void GetDamage(int damage) {
         if (this.hp - damage > 0) {
             this.hp -= damage;
-            System.out.printf("%s is alive and has %s hp\n", this.NAME, this.hp);
         } else {
-
-            System.out.printf("%s is died\n", this.NAME);
-            //die(this);
+            this.hp=0;
         }
+    }
+    @Override
+    public String getName(){ return "";}
+
+    @Override
+    public String toString() {
+        return String.format("Name: %s  Hp: %d  Attack: %d Defense: %d Speed: %d Type: %s ",
+                this.NAME, this.hp, this.attack, this.defense, this.speed, this.getClass().getSimpleName());
+    }
+
+    @Override
+    public Vector2 getPosition(){
+        return this.position;
     }
 }

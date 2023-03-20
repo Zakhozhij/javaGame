@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class Sniper extends Shooter{
     
 
@@ -12,7 +10,6 @@ public class Sniper extends Shooter{
                 12,
                 10,
                 Sniper.r.nextInt(8,11),
-                32,
                 32);
     }
     public Sniper() {
@@ -21,6 +18,10 @@ public class Sniper extends Shooter{
     @Override
     public String getInfo() {
         return String.format("%s", super.getInfo());
+    }
+    @Override
+    public String getName(){
+        return "Sniper";
     }
 
     
