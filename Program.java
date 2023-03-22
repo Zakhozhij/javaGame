@@ -23,7 +23,7 @@ public class Program {
     public static ArrayList<Hero> whiteSide = new ArrayList<>();
     public static ArrayList<Hero> darkSide = new ArrayList<>();
     public static ArrayList<Hero> allUnits = new ArrayList<>();
-    public static Board board = new Board(new Hero[10][10]);
+    public static Board board = new Board(new Hero[11][11]);
 
     public static void main(String[] args) {
 
@@ -37,6 +37,7 @@ public class Program {
         }
         //sc.close();
 
+
     }
 
     private static void init() {
@@ -49,7 +50,7 @@ public class Program {
                     whiteSide.add(new Robber(getName(), 1));
                     break;
                 case 2:
-                    whiteSide.add(new Sniper(getName(), 1));
+                    whiteSide.add(new Sniper(getName(), 1));//Sniper
                     break;
                 case 3:
                     whiteSide.add(new Peasant(getName(), 1));
@@ -59,7 +60,7 @@ public class Program {
             }
             switch (ThreadLocalRandom.current().nextInt(0, 4)) {
                 case 0:
-                    darkSide.add(new Bowman(getName(), 2));
+                    darkSide.add(new Bowman(getName(), 2));//Bowman
                     break;
                 case 1:
                     darkSide.add(new Spearman(getName(), 2));
@@ -82,6 +83,9 @@ public class Program {
         // board.getInfo();
     }
 
+
+    
+
     private static void rechargePeasants() {
         for (Hero unit : allUnits) {
             if (unit.getClass().getTypeName().equals("Peasant")) {
@@ -89,6 +93,8 @@ public class Program {
             }
         }
     }
+    
+    
 
     private static String getName() {
         return Names.values()[ThreadLocalRandom.current().nextInt(Names.values().length)].toString();

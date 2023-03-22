@@ -28,8 +28,8 @@ public abstract class Shooter extends Hero {
     public void step(Board board, ArrayList<Hero> moveList) {
         int teamNumber = this.team;
         Hero victim = null;
-        double dist = 11;
-        double minDist = 11;
+        double dist = 100;
+        double minDist = 100;
         if (this.shots > 0 && this.hp > 0) {
            // System.out.println("Могу стрелять!");
 

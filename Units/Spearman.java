@@ -1,6 +1,5 @@
-import java.util.ArrayList;
 
-public class Spearman extends Hero{
+public class Spearman extends Infantry{
 
 
     public Spearman(String name, int team) {
@@ -19,16 +18,6 @@ public class Spearman extends Hero{
     @Override
     public String getInfo() {
         return String.format("%s", super.getInfo());
-    }
-    
-    @Override
-    public void step(Board board,ArrayList<Hero> moveList){
-        //System.out.println("Step spearman!");
-    }
-
-    @Override
-    public void Attack(Hero target) {
-        //System.out.println("Attack spearman!");
     }
     @Override
     public String getName(){

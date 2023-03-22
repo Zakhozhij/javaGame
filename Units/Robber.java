@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Robber extends Hero {
+public class Robber extends Infantry {
 
     public Robber(String name, int team) {
         super(
@@ -22,15 +22,7 @@ public class Robber extends Hero {
         return String.format("%s", super.getInfo());
     }
 
-    @Override
-    public void step(Board board,ArrayList<Hero> moveList) {
-        //System.out.println("Step robber!");
-    }
-
-    @Override
-    public void Attack(Hero target) {
-        //System.out.println("Attack robber!");
-    }
+    
     @Override
     public String getName(){
         return "Robber";

@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Monk extends Hero {
+public class Monk extends Infantry {
     private int magic;
     private int maxMagic;
 
@@ -25,15 +25,7 @@ public class Monk extends Hero {
         return String.format("%s", super.getInfo());
     }
 
-    @Override
-    public void step(Board board,ArrayList<Hero> moveList) {
-        //System.out.println("Step monk!");
-    }
-
-    @Override
-    public void Attack(Hero target) {
-        //System.out.println("Attack monk!");
-    }
+   
 
     public int getMagic() {
         return magic;

@@ -75,7 +75,7 @@ public abstract class Hero implements HeroInterface, Comparable<Hero> {
         if (this.hp - damage > 0) {
             this.hp -= damage;
         } else {
-            this.hp=0;
+            this.hp=0;        
         }
     }
     @Override
@@ -90,5 +90,14 @@ public abstract class Hero implements HeroInterface, Comparable<Hero> {
     @Override
     public Vector2 getPosition(){
         return this.position;
+    }
+
+   
+
+    public void setPositionX(int x) {
+        this.position.x = x;
+    }
+    public void setPositionY(int y) {
+        this.position.y = y;
     }
 }
