@@ -1,9 +1,8 @@
 import java.util.ArrayList;
 
-public class Magician extends Hero {
+public class Magician extends Supports {
 
-    private int magic;
-    private int maxMagic;
+   
 
     public Magician(String name,int team) {
         super(
@@ -13,10 +12,9 @@ public class Magician extends Hero {
                 9,
                 17,
                 12,
-                -5
+                -5,
+                1
                 );
-        this.maxMagic = 1;
-        this.magic = maxMagic;
     }
     public Magician() {
         super();
@@ -37,13 +35,7 @@ public class Magician extends Hero {
         //System.out.println("Attack magician!");
     }
 
-    public int getMagic() {
-        return magic;
-    }
-
-    public int getMaxMagic() {
-        return maxMagic;
-    }
+    
     @Override
     public String getName(){
         return "Magician";

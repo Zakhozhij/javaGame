@@ -29,13 +29,15 @@ public class Program {
 
         init();
         Scanner sc = new Scanner(System.in);
-        while (true) {
+        int gameOver=0;
+        while (gameOver==0) {
             rechargePeasants();
+            gameOver=checkWinners();
             ConsoleView.view();
             makeStep();
-            sc.nextLine();
+            sc.nextLine();   
         }
-        //sc.close();
+        sc.close();
 
 
     }
@@ -93,8 +95,6 @@ public class Program {
             }
         }
     }
-    
-    
 
     private static String getName() {
         return Names.values()[ThreadLocalRandom.current().nextInt(Names.values().length)].toString();
@@ -102,5 +102,30 @@ public class Program {
 
     private static void makeStep() {
         allUnits.forEach(u -> u.step(board, allUnits));
+    }
+
+    private static Integer checkWinners() {
+        int diedWhite=0;
+        for (Hero unit : whiteSide) {
+            if(unit.hp==0){
+                diedWhite++;
+            }
+        }
+        if(diedWhite==GANG_SIZE){
+            System.out.println("Победила темная команда");
+            return 1;
+        }
+        int diedDark=0;
+        for (Hero unit : darkSide) {
+            if(unit.hp==0){
+                diedDark++;
+            }
+        }
+        if(diedDark==GANG_SIZE){
+            System.out.println("Победила светлая команда");
+            return 2;
+        }
+        System.out.println("Игра продолжается...\n Количество юнитов осталось\n Свет->"+(GANG_SIZE-diedWhite)+" Тьма->"+(GANG_SIZE-diedDark));
+        return 0;
     }
 }

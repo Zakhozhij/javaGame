@@ -1,8 +1,7 @@
 import java.util.ArrayList;
 
-public class Monk extends Infantry {
-    private int magic;
-    private int maxMagic;
+public class Monk extends Supports {
+
 
     public Monk(String name,int team) {
         super(
@@ -12,9 +11,8 @@ public class Monk extends Infantry {
                 5,
                 12,
                 7,
-                -4);
-        this.maxMagic = 1;
-        this.magic = maxMagic;
+                -4,
+                1);
     }
     public Monk() {
         super();
@@ -25,15 +23,6 @@ public class Monk extends Infantry {
         return String.format("%s", super.getInfo());
     }
 
-   
-
-    public int getMagic() {
-        return magic;
-    }
-
-    public int getMaxMagic() {
-        return maxMagic;
-    }
     @Override
     public String getName(){
         return "Monk";

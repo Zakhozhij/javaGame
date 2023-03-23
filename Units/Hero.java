@@ -62,6 +62,10 @@ public abstract class Hero implements HeroInterface, Comparable<Hero> {
     }
 
     @Override
+    public void Сure(Hero target) {
+    }
+
+    @Override
     public int compareTo(Hero o) {
         if (this.speed > o.speed)
             return -1;
@@ -78,6 +82,15 @@ public abstract class Hero implements HeroInterface, Comparable<Hero> {
             this.hp=0;        
         }
     }
+
+    public void GetСure(int cure) {
+        if (this.hp + cure > this.maxHp) {
+            this.hp = maxHp;
+        } else {
+            this.hp+=cure;        
+        }
+    }
+
     @Override
     public String getName(){ return "";}
 

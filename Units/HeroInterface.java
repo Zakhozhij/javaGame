@@ -6,4 +6,5 @@ public interface HeroInterface {
     void Attack(Hero target);
     String getName();
     Vector2 getPosition();
+    void Сure(Hero target);
 }
